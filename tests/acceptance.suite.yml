@@ -13,6 +13,9 @@ modules:
             log_js_errors: true
 extensions:
     enabled:
+        - Codeception\Extension\RunProcess:
+            - phantomjs --webdriver=0.0.0.0:4444
+            sleep: 5
         - Codeception\Extension\PhpBuiltinServer:
             hostname: 0.0.0.0
             port: 8080
@@ -20,5 +23,3 @@ extensions:
             startDelay: 1
             autostart: true
             # phpIni: /etc/php5/apache2/php.ini
-        - Codeception\Extension\RunProcess:
-            - phantomjs --webdriver=0.0.0.0:4444
