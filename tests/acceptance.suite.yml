@@ -8,6 +8,7 @@ modules:
     enabled:
         - WebDriver:
             url: 'http://localhost:8080/'
+            host: localhost
             browser: chrome
             log_js_errors: true
 extensions:
@@ -20,4 +21,4 @@ extensions:
             autostart: true
             # phpIni: /etc/php5/apache2/php.ini
         - Codeception\Extension\RunProcess:
-            - phantomjs --webdriver=127.0.0.1:4444
+            - phantomjs --webdriver=0.0.0.0:4444
