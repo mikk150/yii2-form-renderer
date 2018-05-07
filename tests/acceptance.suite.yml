@@ -14,7 +14,7 @@ modules:
 extensions:
     enabled:
         - Codeception\Extension\RunProcess:
-            - phantomjs --webdriver=0.0.0.0:4444
+            1: phantomjs --webdriver=0.0.0.0:4444
             sleep: 5
         - Codeception\Extension\PhpBuiltinServer:
             hostname: 0.0.0.0
