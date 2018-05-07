@@ -1,0 +1,23 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+class_name: TestGuy
+modules:
+    enabled:
+        - WebDriver:
+            url: 'http://localhost:8080/'
+            browser: chrome
+            log_js_errors: true
+extensions:
+    enabled:
+        - Codeception\Extension\PhpBuiltinServer:
+            hostname: 0.0.0.0
+            port: 8080
+            documentRoot: ./tests/_app/web/
+            startDelay: 1
+            autostart: true
+            # phpIni: /etc/php5/apache2/php.ini
+        - Codeception\Extension\RunProcess:
+            - phantomjs --webdriver=127.0.0.1:4444

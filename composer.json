@@ -1,0 +1,25 @@
+{
+    "name": "mikk150/yii2-form-renderer",
+    "description": "Helper to build forms from Models themself",
+    "type": "yii2-extension",
+    "keywords": [],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "phpdocumentor/reflection-docblock": "^2.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "~2.4.0",
+        "codeception/phpbuiltinserver": "~1.4.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "mikk150\\formrenderer\\": "src/"
+        }
+    }
+}
