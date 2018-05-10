@@ -23,3 +23,5 @@ extensions:
             startDelay: 1
             autostart: true
             # phpIni: /etc/php5/apache2/php.ini
+coverage:
+    enabled: false

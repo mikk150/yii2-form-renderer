@@ -1,5 +1,6 @@
 <?php
 
+namespace formbuilder\tests\acceptance;
 use formbuilder\tests\TestGuy;
 use Facebook\WebDriver\WebDriverKeys;
 
@@ -17,6 +18,8 @@ class TestBrowserCest
         $I->see('Test Field');
 
         $I->fillField('#requiredmodel-testfield', 'test');
+        $I->pressKey('#requiredmodel-testfield', WebDriverKeys::TAB);
+        $I->wait(1);
 
         $I->dontSee('Test Field cannot be blank.');
     }
@@ -30,6 +33,7 @@ class TestBrowserCest
         $I->clearField('#requiredmodel-testfield');
         $I->pressKey('#requiredmodel-testfield', WebDriverKeys::TAB);
         $I->wait(1);
+
         $I->see('Test Field cannot be blank.');
     }
     
@@ -37,6 +41,7 @@ class TestBrowserCest
     {
         $I->amOnPage('?r=test/with-data');
         $I->see('Test Field');
+
         $I->seeInField('#preexistingvaluemodel-testfield', 'test');
     }
 

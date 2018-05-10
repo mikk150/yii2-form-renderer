@@ -8,6 +8,9 @@ use phpDocumentor\Reflection\DocBlock\Context;
 use yii\widgets\ActiveForm;
 use yii\base\Model;
 use yii\helpers\Json;
+use ReflectionClass;
+use ReflectionProperty;
+use yii\base\InvalidConfigException;
 
 class FormRendererWidget extends Widget
 {
@@ -26,12 +29,23 @@ class FormRendererWidget extends Widget
      */
     public function init()
     {
+        if (!($this->form instanceof ActiveForm)) {
+            throw new InvalidConfigException('Attribute "form" is not defined or has to be instance of "yii\widgets\ActiveForm".');
+        }
+        
+        if (!($this->model instanceof Model)) {
+            throw new InvalidConfigException('Attribute "model" is not defined or has to be instance of "yii\base\Model".');
+        }
 
+        parent::init();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
-        $reflection = new \ReflectionClass($this->model);
+        $reflection = new ReflectionClass($this->model);
 
         $string = '';
 
@@ -43,7 +57,7 @@ class FormRendererWidget extends Widget
         return $string;
     }
 
-    protected function formBuilderArray(\ReflectionClass $reflection)
+    protected function formBuilderArray(ReflectionClass $reflection)
     {
         $context = new Context($reflection->getNamespaceName());
         $doc = new DocBlock($reflection, $context);
@@ -62,7 +76,7 @@ class FormRendererWidget extends Widget
         return $array;
     }
 
-    protected function formBuilderPropertyArray(\ReflectionProperty $propertyReflection, $context = null)
+    protected function formBuilderPropertyArray(ReflectionProperty $propertyReflection, $context = null)
     {
         $phpdoc = new DocBlock($propertyReflection, $context);
 

@@ -6,3 +6,13 @@ paths:
     data: tests/_data
     support: tests/_support
     envs: tests/_envs
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+coverage:
+    enabled: true
+    include:
+        - src/*.php
+    exclude:
+        - tests/*
